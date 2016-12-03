@@ -1,0 +1,30 @@
+<div class="navbar-fixed">
+  <nav class="blue darken-3" role="navigation">
+    <div class="nav-wrapper">
+      <ul class="hide-on-med-and-down admin">
+        <li>
+            <%= link_to "Home", root_path %>
+        </li>
+        <li class="<%= params[:controller] == 'admin/posts' ? 'active' : '' %> ">
+            <%= link_to "Post", admin_posts_path %>
+        </li>
+        <li class="<%= params[:controller] == 'admin/categories' ? 'active' : '' %> ">
+          <%= link_to "Categories", admin_categories_path %>
+        </li>
+        <li class="<%= params[:controller] == 'admin/users' ? 'active' : '' %> ">
+          <%= link_to "Users", admin_users_path %></li>
+        <li>
+          <input type="text" class="search col m8 s8 offset-m2 offset-s2" placeholder="Search">
+          <!-- <input type="Submit"> -->
+        </li>
+      </ul>
+      <ul class="hide-on-med-and-down right">
+        <li><a class="waves-effect waves-light btn">Logout</a></li>
+      </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+</div>

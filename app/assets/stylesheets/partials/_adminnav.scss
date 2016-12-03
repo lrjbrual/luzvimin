@@ -1,0 +1,30 @@
+nav .brand-logo{
+  padding-left: 20px;
+  font-family: 'Lobster', cursive;
+}
+nav .nav-wrapper {
+    padding-left: 50px;
+}
+
+ul li input.search{
+    background-color: white;
+    color: black;
+    border: none;
+    height: 30px;
+    width: 200px;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    padding: 0 10px 0 10px;
+    margin-left: 40px;
+  }
+
+//to put inside the button
+//   input[type="Submit"] {
+//     margin-left: -60px;
+//     height: 30px;
+//     width: 70px;
+//     background: blue;
+//     color: white;
+//     border: 0;
+//     -webkit-appearance: none;
+// }
