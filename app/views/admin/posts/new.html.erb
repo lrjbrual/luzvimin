@@ -1,2 +1,57 @@
-<h1>Admin::Posts#new</h1>
-<p>Find me in app/views/admin/posts/new.html.erb</p>
+<br><br><br>
+<div class="container margin-top">
+  <div class="card-panel">
+    <h5>Create New Post</h5>
+    <%= form_for [:admin, @post] do |f| %>
+      <% if @post.errors.any? %>
+        <% @post.errors.full_messages.each do |msg| %>
+        <!-- Show errors -->
+        <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+      <% end %>
+      <div class="row">
+        <div class="input-field col s10 m8 offset-m2">
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 m8 offset-m2">
+          <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]},
+          {:include_blank => 'Select One'}%>
+          <label>Category in Select</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 m8 offset-m2">
+          <%= f.select :user_id, User.all.collect {|x| [x.name, x.id]},
+              {:include_blank => 'Select One Author'}, class: "input-field col s12" %>
+          <label>Author in Select</label>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="input-field btn col offset-m2">
+          <%= f.file_field :image %>
+        </div>
+      </div>
+        <div class="row">
+          <div class="input-field col s12 m8 offset-m2">
+            <%= f.label :tags %>
+            <%= f.text_area :tags, class: "materialize-textarea" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m8 offset-m2">
+            <%= f.label :body %>
+            <%= f.text_area :body, class: "materialize-textarea" %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <%= f.submit "Submit", class: "waves-effect waves-light btn btn-small col offset-m2" %>
+          <%= link_to "Cancel", admin_posts_path, class: "waves-effect waves-light btn btn-small red col offset-m6" %>
+        </div>
+      <% end %>
+  </div>
+</div>

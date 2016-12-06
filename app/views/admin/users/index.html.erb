@@ -1,2 +1,41 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<br><br><br>
+<div class="container">
+  <div class="card-panel">
+  <ul>
+    <li><h5>Manage Users</h5></li>
+    <li>
+      <%= link_to "Add User", new_admin_user_path, class: "waves-effect waves-light btn btn-small" %>
+    </li>
+  </ul>
+  <% if @users.exists? %>
+    <table class="highlight responsive-table bordered col-s12 col-m12">
+      <thead>
+        <tr>
+            <th data-field="id">Name</th>
+            <th data-field="email">Email</th>
+            <th data-field="date">Date Created</th>
+            <th data-field="selection">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+          <td><%= link_to edit_admin_user_path(user), class: "btn-floating blue" do %>
+                  <i class="material-icons">edit</i>Edit
+              <% end %>
+              <%= link_to admin_user_path(user), class: "btn-floating red", method: :delete, data: {confirm: 'Are you sure you want to delete?'} do %>
+                      <i class="material-icons">delete</i>Delete
+              <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>There are no post</p>
+  <% end %>
+  </div>
+</div>

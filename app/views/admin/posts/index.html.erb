@@ -3,42 +3,47 @@
   <div class="card-panel">
   <ul>
     <li><h5>Manage Post</h5></li>
-    <li><a class="waves-effect waves-light btn btn-small">Add Post</a></li>
+    <li>
+      <%= link_to "Add Post", new_admin_post_path, class: "waves-effect waves-light btn btn-small" %>
+    </li>
   </ul>
-<table class="highlight col-s12 col-m12">
-  <thead>
-    <tr>
-        <th data-field="id">Title</th>
-        <th data-field="name">Categories</th>
-        <th data-field="price">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Alvin</td>
-      <td>Eclair</td>
-      <td>
-        <a class="btn-floating blue"><i class="material-icons">edit</i></a>
-        <a class="btn-floating red"><i class="material-icons">delete</i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>Alan</td>
-      <td>Jellybean</td>
-      <td>
-        <a class="btn-floating blue"><i class="material-icons">edit</i></a>
-        <a class="btn-floating red"><i class="material-icons">delete</i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>Jonathan</td>
-      <td>Lollipop</td>
-      <td>
-        <a class="btn-floating blue"><i class="material-icons">edit</i></a>
-        <a class="btn-floating red"><i class="material-icons">delete</i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <% if @posts.exists? %>
+    <table class="highlight responsive-table bordered col-s12 col-m12">
+      <thead>
+        <tr>
+            <th data-field="id">Title</th>
+            <th data-field="name">Categories</th>
+            <th data-field="author">Author</th>
+            <th data-field="image">Images</th>
+            <th data-field="name">Tags</th>
+            <th data-field="name">Post Description</th>
+            <th data-field="time">Time Created</th>
+            <th data-field="selection">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.category.name %></td>
+          <td><%= post.user_id %></td>
+          <td><%= post.image %></td>
+          <td><%= post.tags %></td>
+          <td><%= post.body %></td>
+          <td><%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+          <td><%= link_to edit_admin_post_path(post), class: "btn-floating blue" do %>
+                  <i class="material-icons">edit</i>Edit
+              <% end %>
+              <%= link_to admin_post_path(post), class: "btn-floating red", method: :delete, data: {confirm: 'Are you sure you want to delete?'} do %>
+                      <i class="material-icons">delete</i>Delete
+              <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>There are no post</p>
+  <% end %>
   </div>
 </div>

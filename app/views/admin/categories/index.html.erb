@@ -7,7 +7,7 @@
       <%= link_to "Create New", new_admin_category_path, class: "waves-effect waves-light btn btn-small" %>
     </li>
   </ul>
-<table class="highlight col-s12 col-m12">
+<table class="highlight responsive-table bordered col-s12 col-m12">
   <thead>
     <tr>
         <th data-field="name">Categories Title</th>
@@ -16,9 +16,8 @@
     </tr>
   </thead>
   <tbody>
-          <% @categories.each do |category| %>
+    <% @categories.each do |category| %>
     <tr>
-
       <td><%= category.name %></td>
       <td><%= category.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
       <td><%= link_to edit_admin_category_path(category), class: "btn-floating blue" do %>
@@ -28,9 +27,8 @@
                   <i class="material-icons">delete</i>Delete
           <% end %>
       </td>
-
     </tr>
-          <% end %>
+    <% end %>
   </tbody>
 </table>
 </div>

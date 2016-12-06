@@ -1,7 +1,7 @@
 <br><br><br>
 <div class="container">
   <div class="card-panel">
-    <h5>Edit Category</h5>
+    <h5>New Category</h5>
     <%= form_for [:admin, @category] do |f| %>
       <% if @category.errors.any? %>
         <% @category.errors.full_messages.each do |msg| %>
