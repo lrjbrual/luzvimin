@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'mail_form'
+gem 'will_paginate', '~> 3.1'
 
 group :development, :test do
   gem 'binding_of_caller'

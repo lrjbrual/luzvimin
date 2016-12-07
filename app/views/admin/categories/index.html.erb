@@ -1,5 +1,5 @@
 <br><br><br>
-<div class="container ">
+  <div class="container ">
   <div class="card-panel">
   <ul>
     <li><h5>Manage Categories</h5></li>
@@ -7,29 +7,34 @@
       <%= link_to "Create New", new_admin_category_path, class: "waves-effect waves-light btn btn-small" %>
     </li>
   </ul>
-<table class="highlight responsive-table bordered col-s12 col-m12">
-  <thead>
-    <tr>
-        <th data-field="name">Categories Title</th>
-        <th data-field="time">Time Created</th>
-        <th data-field="price">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.name %></td>
-      <td><%= category.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
-      <td><%= link_to edit_admin_category_path(category), class: "btn-floating blue" do %>
-              <i class="material-icons">edit</i>Edit
-          <% end %>
-          <%= link_to admin_category_path(category), class: "btn-floating red", method: :delete, data: {confirm: 'Are you sure you want to delete?'} do %>
-                  <i class="material-icons">delete</i>Delete
-          <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+<% if @categories.exists? %>
+    <table class="highlight responsive-table bordered col-s12 col-m12">
+      <thead>
+        <tr>
+            <th data-field="name">Categories Title</th>
+            <th data-field="time">Time Created</th>
+            <th data-field="price">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+          <td><%= link_to edit_admin_category_path(category), class: "btn-floating blue" do %>
+                  <i class="material-icons">edit</i>Edit
+              <% end %>
+              <%= link_to admin_category_path(category), class: "btn-floating red", method: :delete, data: {confirm: 'Are you sure you want to delete?'} do %>
+                      <i class="material-icons">delete</i>Delete
+              <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @categories %>
+    <% else %>
+      <p>There are no post</p>
+  <% end %>
+  </div>
 </div>

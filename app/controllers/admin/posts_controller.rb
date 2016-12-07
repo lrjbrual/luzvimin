@@ -36,7 +36,11 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:search]
+      @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 2, :page => params[:page]) #searching
+    else
+      @posts = Post.all.order('created_at DESC').paginate(:per_page => 2, :page => params[:page]) #sorting using desc
+    end
   end
 
   def show
