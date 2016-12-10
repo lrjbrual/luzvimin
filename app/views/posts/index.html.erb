@@ -16,7 +16,7 @@
         <div class="col s12 m7">
           <h4 class="Update-font">Latest Update</h4>
           <% if @posts.exists? %>
-            <% @posts.limit(<4></4>).each_slice(2) do |post| %>
+            <% @posts.limit(4).each_slice(2) do |post| %>
               <% post.each do |post| %>
                 <div class="col s12 m6 spacing-top">
                   <div class="icon-block">
