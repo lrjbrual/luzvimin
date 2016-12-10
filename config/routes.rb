@@ -108,6 +108,7 @@ Rails.application.routes.draw do
   resources 'contacts', only: [:new, :create]
   namespace :admin do
     resources :posts, :categories, :users
+    resources :posts, param: :name
   end
 
 end

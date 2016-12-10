@@ -18,6 +18,8 @@ gem 'autoprefixer-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'mail_form'
 gem 'will_paginate', '~> 3.1'
+gem 'paperclip'
+gem 'wysiwyg-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
