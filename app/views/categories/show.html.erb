@@ -1,2 +1,59 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="wrapper">
+  <div class="section">
+    <!--   Icon Section   -->
+    <div class="row">
+      <div class="col s12 m7">
+        <div class="col s12 m12 spacing-top">
+          <div class="icon-block">
+            <h5 class="blue-text Update-font">
+              <%= @category.name %>
+            </h5>
+            <div class="card-image ">
+              <% if @posts.exists? %>
+                <% @posts.limit(4).each_slice(2) do |post| %>
+                  <% post.each do |post| %>
+                    <div class="col s12 m6 spacing-top">
+                      <div class="icon-block">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <%= image_tag post.image.url, width: '100%' %>
+                          <h6 class="left">
+                            <blockquote>
+                              <b><%= post.title.upcase %></b>
+                            </blockquote>
+                          </h6>
+                        </div>
+                        <p class="light"><%= raw post.body.truncate(200) %></p>
+                        <div class="chip">
+                          <h6>Posted on&nbsp;<%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></h6>
+                        </div>
+                        <%= link_to "Read More..", post_path(post), class: "waves-effect waves-light btn waves-effect waves-teal col s12 m12" %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+                <% else %>
+                  <p>No posts category yet</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="col s12 m5 collection-padding">
+          <div class="row">
+            <div class="col s12 m9 offset-m2">
+              <%= render partial: "partials/sidebarCategories" %>
+            </div>
+          <div class="col s12 m9 offset-m2 z-depth-1 blue darken-3" id="border-mailing">
+            <h6 class="white-text center">Get More Update</h6>
+            <h5 class="white-text center">IN YOUR INBOX</h5>
+            <h6 class="white-text center">Subscribe to our mailing list get interesting<br> stuff And Updates to your email Inbox</h6>
+            <br>
+            <input type="mailinglist" class="mailing-list col m8 s8 offset-m2 offset-s2" placeholder="Type Your Email Here">
+            <a class="waves-effect waves-light btn col m8 s8 offset-m2 offset-s2">Sign Up</a>
+            <br><br><br><br>
+            <p class="white-text center">We respect your privacy and take protecting seriously</p>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>

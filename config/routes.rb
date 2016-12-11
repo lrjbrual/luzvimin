@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   get 'posts/index'
 
   get 'posts/show'
-  #
-  # namespace :admin do
-  # get 'sessions/new'
-  # end
-  #
+
+  namespace :admin do
+  get "login" => "sessions#new", :as => "login"
+  end
+
   # namespace :admin do
   # get 'sessions/create'
   # end
