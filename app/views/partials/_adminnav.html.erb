@@ -20,7 +20,19 @@
         </li>
       </ul>
       <ul class="hide-on-med-and-down right">
-        <li><a class="waves-effect waves-light btn">Logout</a></li>
+        <li>
+          <li>
+            <% if current_user %>
+                  <div class="chip">
+                    <b><%= current_user.name.upcase %></b>
+                  </div>
+                  &nbsp; you are logged In.
+                  <%= link_to "Log out", admin_logout_path, class: "waves-effect waves-light btn" %>
+                  <% else %>
+                  <%= link_to "Log in", admin_login_path, class: "waves-effect waves-light btn"  %>
+            <% end %>
+          </li>
+        </li>
       </ul>
       <!-- Mobile functionality -->
       <ul id="nav-mobile" class="side-nav  blue darken-4 center">
@@ -40,6 +52,18 @@
           <!-- Tag form for search -->
           <%= render "partials/admin/search" %>
         </li>
+        <li>
+          <% if current_user %>
+                <div class="chip">
+                  <b><%= current_user.name.upcase %></b>
+                </div>
+                &nbsp; you are logged In.
+                <%= link_to "Log out", admin_logout_path, class: "waves-effect waves-light btn" %>
+                <% else %>
+                <%= link_to "Log in", admin_login_path, class: "waves-effect waves-light btn"  %>
+          <% end %>
+        </li>
+
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
