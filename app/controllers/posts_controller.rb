@@ -6,6 +6,7 @@ class PostsController < ApplicationController
       @posts = Post.all.order('created_at DESC') #sorting using desc
     end
     @categories = Category.all
+    @documents = Document.all
   end
 
   def show

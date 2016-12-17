@@ -32,7 +32,12 @@
         <% end %>
       </tbody>
     </table>
-    <%= will_paginate @categories %>
+    <div class="pagination">
+      <%= will_paginate @categories, :container => false %>
+      <div class="page_info right">
+        <%= page_entries_info @categories %>
+      </div>
+    </div>
     <% else %>
       <p>There are no post</p>
   <% end %>

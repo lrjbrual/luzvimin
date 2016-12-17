@@ -3,15 +3,34 @@
     <div class="nav-wrapper">
       <a id="logo-container" href="#" class="brand-logo">luzVi consulting</a>
       <ul class="right hide-on-med-and-down">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "Contact", contact_path %></li>
+        <li class="<%= 'active' if params[:controller] == 'posts' %>">
+          <%= link_to "Home", root_path %>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'about' %>">
+          <%= link_to "About", about_path %>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'contacts' %>">
+          <%= link_to "Contact", contact_path %>
+        </li>
         <li>
           <%= render "partials/search" %>
         </li>
       </ul>
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
+      <ul id="nav-mobile" class="side-nav blue darken-3 center">
+        <a id="logo-container" href="#" class="brand-logo white-text ">luzVi consulting</a>
+        <br>
+          <li class="<%= 'active' if params[:controller] == 'posts' %>">
+            <%= link_to "Home", root_path, class: "green" %>
+          </li>
+          <li class="<%= 'active' if params[:controller] == 'about' %>">
+            <%= link_to "About", about_path %>
+          </li>
+          <li class="<%= 'active' if params[:controller] == 'contacts' %>">
+            <%= link_to "Contact", contact_path %>
+          </li>
+          <li>
+            <%= render "partials/search" %>
+          </li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
